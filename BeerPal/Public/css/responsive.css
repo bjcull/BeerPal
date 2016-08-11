@@ -1,0 +1,359 @@
+/*
+    ========================================
+    Dodolan Manuk - Catalog Themes
+    ========================================
+    
+    @author         : Afriq Yasin Ramadhan
+    @version        : v1.1
+    @date-create    : 6/1/2013
+    @last-update    : 2/28/2014
+    @file-name      : responsive
+
+*/
+
+@media screen and (min-width:992px) and (max-width:1200px) {
+    #home-slider {
+        margin-top:0px;
+    }
+
+    #home-slider .item {
+        padding: 80px 0px 30px;
+        height: 450px;
+    }
+    
+}
+
+@media screen and (min-width:769px) and (max-width:991px) {
+    #home-slider{
+        margin-top:0px;
+    }
+
+    #home-slider .item {
+        padding:80px 0px 30px;
+        height: 450px;
+    }
+
+    #home-slider .carousel-control.left,#home-slider .carousel-control.right {
+        margin-top: 20%;
+    }
+
+    #home-slider .carousel-inner .item .carousel-content {
+        margin-top: 70px;
+    }
+}
+
+
+@media (max-width: 979px){
+    body{
+        padding: 0px;
+        margin:0;
+    }
+    
+    .navbar .nav-right{
+        margin-left: 0px;
+    }
+  
+    .navbar .btn-navbar {
+        margin-top: 18px;
+        margin-right: 20px;
+        color: #ffffff;
+        text-shadow: none;
+        background: #FFD600;
+        border-color: transparent transparent transparent;
+        border-color: transparent;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+          box-shadow: none;
+    }
+    
+    .navbar .btn-navbar:hover,
+    .navbar .btn-navbar:focus,
+    .navbar .btn-navbar:active{
+        background: #F1C40F;
+    }
+    
+    .navbar .btn-navbar .icon-bar {
+        background-color: #ffffff;
+        -webkit-border-radius: 1px;
+        -moz-border-radius: 1px;
+        border-radius: 1px;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+    
+    .navbar-collapse .dropdown-menu a{
+        font-weight: 600;
+    }
+    
+    .navbar-collapse .dropdown-menu a:hover {
+        font-weight: 600;
+        background: #eff0f2;
+        color: #2C3E50;
+    }
+
+    .navbar-collapse .dropdown-menu .sub-menu {
+        position: static;
+        top: auto;
+        left: auto;
+        display: none;
+        float: none;
+        max-width: none;
+        padding: 0;
+        margin: 0 15px;
+        background-color: transparent;
+        border: none;
+        -webkit-border-radius: 0;
+           -moz-border-radius: 0;
+                border-radius: 0;
+        -webkit-box-shadow: none;
+           -moz-box-shadow: none;
+                box-shadow: none;
+    }
+
+    .navbar-collapse .dropdown-menu li .sub-menu {
+        visibility: visible;
+        display: block;
+    }
+
+    .navbar-collapse .dropdown-menu .sub-menu:before {
+        display: none;
+    }
+
+    .navbar-collapse .dropdown-menu .sub-menu:after {
+       display: none;
+    }
+    
+    .blog .the-calendar:before{
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: 10px;
+        border-top: 10px solid #f1c40f ;
+        border-bottom: 10px solid transparent ;
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+        top: auto;
+        margin-top: 0;
+        left: 50%;
+        bottom: -20px;
+        margin-left: -10px;
+    }
+    
+    .navbar .nav-left{
+        float: left;
+    }
+
+    .navbar .nav-right{
+        float: right;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .navbar-default .navbar-toggle{
+        margin-top: 12px;
+    }
+    
+    .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+        background-color: #F1C40F;
+    }
+
+    #home-slider {
+        margin-top:0px;
+    }
+
+    #home-slider .item {
+        height: auto;
+        padding: 60px 0px 10px;
+        min-height: 400px;
+    }
+
+    #home-slider  .carousel-indicators li {
+        display:inline-block;
+        width:20px;
+        height:20px;
+        margin:15px 5px 0;
+        text-indent:-999px;
+        border:1px solid #1c222b;
+        border-radius:10px;
+        cursor:pointer;
+    }
+
+    #home-slider  .carousel-indicators .active {
+        margin:15px 5px 0;
+        width:20px;
+        height:20px;
+        background-color:#1c222b;
+    }
+
+    #home-slider .carousel-inner .item .carousel-content {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    #home-slider .carousel-control.left,#home-slider .carousel-control.right {
+        margin-top: 15%;
+    }
+
+    #catalogue .thumbnail .caption-img{
+        height: auto;
+        min-height: 280px;
+    }
+
+    .blog-container,.team-container{
+        padding-bottom: 20px;
+    }
+
+}
+
+@media (min-width: 480px) and (max-width: 767px){
+    body{
+        padding: 0px;
+        margin:0;
+    }
+    
+    .navbar .btn-navbar {
+        margin-right: 20px;
+    }
+    
+    .navbar .btn-navbar {
+        margin-top: 18px;
+        margin-right: 20px;
+        color: #ffffff;
+        text-shadow: none;
+        background: #FFD600;
+        border-color: transparent transparent transparent;
+        border-color: transparent;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+          box-shadow: none;
+    }
+    
+    .navbar .btn-navbar:hover,
+    .navbar .btn-navbar:focus,
+    .navbar .btn-navbar:active{
+        background: #F1C40F;
+    }
+    
+    .navbar .btn-navbar .icon-bar {
+        background-color: #ffffff;
+        -webkit-border-radius: 1px;
+        -moz-border-radius: 1px;
+        border-radius: 1px;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .navbar .nav-left{
+        float: none;
+        display: block;
+    }
+
+    .navbar .nav-right{
+        float: none;
+        margin-left: -15px;
+        display: block;
+    }
+
+    #home-slider {
+        margin-top:0px !important;
+    }
+
+    #home-slider .item {
+        height: auto;
+        padding:80px 0px 30px;
+        min-height: 350px;
+    }
+
+    #home-slider .carousel-control.left,#home-slider .carousel-control.right {
+        margin-top: 25%;
+    }
+
+    #featured .featured-container{
+        margin-bottom: 30px;
+    }
+    
+    #catalogue .thumbnail .caption-img{
+        height: auto;
+        min-height: 280px;
+    }
+
+    #itemsingle{
+        padding-bottom: 100px;
+    }
+
+}
+
+
+@media (max-width: 480px){
+    body{
+        padding: 0px;
+        margin:0;
+    }
+    
+    .navbar .btn-navbar {
+        margin-right: 20px;
+    }
+    
+    .navbar .btn-navbar {
+        margin-top: 18px;
+        margin-right: 20px;
+        color: #ffffff;
+        text-shadow: none;
+        background: #FFD600;
+        border-color: transparent transparent transparent;
+        border-color: transparent;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+          box-shadow: none;
+    }
+    
+    .navbar .btn-navbar:hover,
+    .navbar .btn-navbar:focus,
+    .navbar .btn-navbar:active{
+        background: #F1C40F;
+    }
+    
+    .navbar .btn-navbar .icon-bar {
+        background-color: #ffffff;
+        -webkit-border-radius: 1px;
+        -moz-border-radius: 1px;
+        border-radius: 1px;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .navbar .nav-left{
+        float: none;
+        display: block;
+    }
+
+    .navbar .nav-right{
+        float: none;
+        margin-left: -15px;
+        display: block;
+    }
+
+    #home-slider .item {
+        height: auto;
+        padding: 60px 0px 30px;
+        min-height: 320px;
+    }
+
+    #home-slider .carousel-control.left,#home-slider .carousel-control.right {
+        margin-top: 25%;
+    }
+
+    #featured .featured-container{
+        margin-bottom: 30px;
+    }
+
+    #catalogue .thumbnail .caption-img{
+        height: auto;
+        min-height: 280px;
+    }
+}
