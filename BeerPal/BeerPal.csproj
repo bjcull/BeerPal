@@ -173,11 +173,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ECommerceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SingleController.cs" />
     <Compile Include="Controllers\WebExperienceProfilesController.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Beer.cs" />
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\OrderItem.cs" />
     <Compile Include="Entities\Ticket.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -186,8 +190,24 @@
     <Compile Include="Migrations\201608250815248_InitialMigration.Designer.cs">
       <DependentUpon>201608250815248_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608251008534_AddedOrders.cs" />
+    <Compile Include="Migrations\201608251008534_AddedOrders.Designer.cs">
+      <DependentUpon>201608251008534_AddedOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608251011534_AddedBeers.cs" />
+    <Compile Include="Migrations\201608251011534_AddedBeers.Designer.cs">
+      <DependentUpon>201608251011534_AddedBeers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608251112205_RemovedUserFromOrder.cs" />
+    <Compile Include="Migrations\201608251112205_RemovedUserFromOrder.Designer.cs">
+      <DependentUpon>201608251112205_RemovedUserFromOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ECommerce\Cart.cs" />
+    <Compile Include="Models\ECommerce\CartItem.cs" />
+    <Compile Include="Models\ECommerce\IndexVm.cs" />
+    <Compile Include="Models\Home\IndexVm.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Single\IndexVm.cs" />
@@ -292,6 +312,10 @@
     <Content Include="Views\Single\Index.cshtml" />
     <Content Include="Views\Single\ThankYou.cshtml" />
     <Content Include="Views\WebExperienceProfiles\Index.cshtml" />
+    <Content Include="Views\ECommerce\Cart.cshtml" />
+    <Content Include="Views\ECommerce\Index.cshtml" />
+    <Content Include="Views\ECommerce\Cancel.cshtml" />
+    <Content Include="Views\ECommerce\ThankYou.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -304,6 +328,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608250815248_InitialMigration.resx">
       <DependentUpon>201608250815248_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608251008534_AddedOrders.resx">
+      <DependentUpon>201608251008534_AddedOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608251011534_AddedBeers.resx">
+      <DependentUpon>201608251011534_AddedBeers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608251112205_RemovedUserFromOrder.resx">
+      <DependentUpon>201608251112205_RemovedUserFromOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

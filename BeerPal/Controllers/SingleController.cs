@@ -73,7 +73,7 @@ namespace BeerPal.Controllers
                                         description = $"Brewery Tour (Single Payment) for {tourInfo.TourDate:dddd, dd MMMM yyyy}",
                                         currency = "USD",
                                         quantity = "1",
-                                        price = (tourInfo.Price/100).ToString(), // PayPal expects string amounts, eg. "20.00"
+                                        price = (tourInfo.Price/100).ToString(), // PayPal expects string amounts, eg. "20.00"                                        
                                     }
                                 }
                             }

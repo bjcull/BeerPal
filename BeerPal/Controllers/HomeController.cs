@@ -3,14 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BeerPal.Models;
+using BeerPal.Models.Home;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace BeerPal.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext _dbContext => HttpContext.GetOwinContext().Get<ApplicationDbContext>();
+
         public ActionResult Index()
         {
-            return View();
+            var model = new IndexVm()
+            {
+                Beers = _dbContext.Beers.ToList()
+            };
+
+            return View(model);
         }
 
         public ActionResult About()

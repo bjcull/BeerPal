@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using BeerPal.Entities;
+
 namespace BeerPal.Migrations
 {
     using System;
@@ -14,18 +17,22 @@ namespace BeerPal.Migrations
 
         protected override void Seed(BeerPal.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            if (!context.Beers.Any())
+            {
+                var beers = new List<Beer>()
+                {
+                    new Beer() { Name = "Raspberry Double IPA", Price = 1200 },
+                    new Beer() { Name = "Goddess Helles Bock", Price = 900 },
+                    new Beer() { Name = "Downward Dog Pumpkin Ale", Price = 1400 },
+                    new Beer() { Name = "Jalapeño Half Moon Dunkel", Price = 1000 },
+                    new Beer() { Name = "Mud Guard Pumpkin Ale", Price = 1000 },
+                    new Beer() { Name = "Molten Mocha IPA", Price = 1100 },
+                    new Beer() { Name = "Big Toe Saison", Price = 700 },
+                    new Beer() { Name = "Nutmeg Doppelgänger Kölsch", Price = 900 },
+                };
+                context.Beers.AddRange(beers);
+                context.SaveChanges();
+            }
         }
     }
 }

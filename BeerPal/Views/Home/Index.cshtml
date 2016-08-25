@@ -1,4 +1,5 @@
-﻿@{
+﻿@model BeerPal.Models.Home.IndexVm
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -129,89 +130,25 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3 col-sm-4 col-xs-12">
-                <div class="thumbnail">
-                    <div class="caption-img" style="background: url(/public/img/beer-glass.png);"></div>
-                    <div class="caption-details">
-                        <h3>Raspberry Double IPA</h3>
-                        <span class="price">$12</span>
+            @foreach (var beer in Model.Beers)
+            {
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <div class="thumbnail">
+                        <div class="caption-img" style="background: url(/public/img/beer-glass.png);"></div>
+                        <div class="caption-details">
+                            <h3>@beer.Name</h3>
+                            <span class="price">$@((beer.Price / 100).ToString("0.00"))</span>
+                        </div>
+                        <a href="detail.html">
+                            <div class="caption-link"><i class="fa fa-plus"></i>
+                            </div></a>
                     </div>
-                    <a href="detail.html"><div class="caption-link"><i class="fa fa-plus"></i></div></a>
                 </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-12">
-                <div class="thumbnail">
-                    <div class="caption-img" style="background: url(/public/img/beer-glass.png);"></div>
-                    <div class="caption-details">
-                        <h3>Goddess Helles Bock</h3>
-                        <span class="price">$9</span>
-                    </div>
-                    <a href="detail.html"><div class="caption-link"><i class="fa fa-plus"></i></div></a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-12">
-                <div class="thumbnail">
-                    <div class="caption-img" style="background: url(/public/img/beer-glass.png);"></div>
-                    <div class="caption-details">
-                        <h3>Downward Dog Pumpkin Ale</h3>
-                        <span class="price">$14</span>
-                    </div>
-                    <a href="detail.html"><div class="caption-link"><i class="fa fa-plus"></i></div></a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-12">
-                <div class="thumbnail">
-                    <div class="caption-img" style="background: url(/public/img/beer-glass.png);"></div>
-                    <div class="caption-details">
-                        <h3>Jalapeño Half Moon Dunkel</h3>
-                        <span class="price">$10</span>
-                    </div>
-                    <a href="detail.html"><div class="caption-link"><i class="fa fa-plus"></i></div></a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-12">
-                <div class="thumbnail">
-                    <div class="caption-img" style="background: url(/public/img/beer-glass.png);"></div>
-                    <div class="caption-details">
-                        <h3>Mud Guard Pumpkin Ale</h3>
-                        <span class="price">$10</span>
-                    </div>
-                    <a href="detail.html"><div class="caption-link"><i class="fa fa-plus"></i></div></a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-12">
-                <div class="thumbnail">
-                    <div class="caption-img" style="background: url(/public/img/beer-glass.png);"></div>
-                    <div class="caption-details">
-                        <h3>Molten Mocha IPA</h3>
-                        <span class="price">$11</span>
-                    </div>
-                    <a href="detail.html"><div class="caption-link"><i class="fa fa-plus"></i></div></a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-12">
-                <div class="thumbnail">
-                    <div class="caption-img" style="background: url(/public/img/beer-glass.png);"></div>
-                    <div class="caption-details">
-                        <h3>Big Toe Saison</h3>
-                        <span class="price">$7</span>
-                    </div>
-                    <a href="detail.html"><div class="caption-link"><i class="fa fa-plus"></i></div></a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-12">
-                <div class="thumbnail">
-                    <div class="caption-img" style="background: url(/public/img/beer-glass.png);"></div>
-                    <div class="caption-details">
-                        <h3>Nutmeg Doppelgänger Kölsch</h3>
-                        <span class="price">$9</span>
-                    </div>
-                    <a href="detail.html"><div class="caption-link"><i class="fa fa-plus"></i></div></a>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>
+
 <!-- end:catalogue -->
 <!-- begin:testimoni -->
 @*<div id="testimoni">
