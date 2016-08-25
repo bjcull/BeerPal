@@ -288,10 +288,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <None Include="Views\Single\Cancel.cshtml" />
-    <None Include="Views\Single\Index.cshtml" />
-    <None Include="Views\Single\ThankYou.cshtml" />
-    <None Include="Views\WebExperienceProfiles\Index.cshtml" />
+    <Content Include="Views\Single\Cancel.cshtml" />
+    <Content Include="Views\Single\Index.cshtml" />
+    <Content Include="Views\Single\ThankYou.cshtml" />
+    <Content Include="Views\WebExperienceProfiles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
