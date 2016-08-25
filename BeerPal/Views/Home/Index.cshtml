@@ -111,7 +111,7 @@
                     <ul>
                         <li>@(DateTime.Today.AddDays(1).ToString("dddd, dd MMMM yyyy"))</li>
                     </ul>
-                    <a href="" class="btn btn-warning btn-lg">Buy Ticket Now ($20)</a>
+                    <a href="@Url.Action("Index", "Single")" class="btn btn-warning btn-lg">Buy Ticket Now ($20)</a>
                 </div>
             </div>
         </div>
@@ -303,3 +303,28 @@
     </div>
 </div>
 <!-- end:blog -->
+
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Need some help?</h3>
+                <p>If you're implementing PayPal in a real world application and need some help, I'm usually available to lend a hand. </p>
+            </div>
+        </div>
+        <div class="row" id="theteam">
+            <div class="col-sm-offset-4 col-sm-4">
+                <a href="https://bencull.com" target="_blank">
+                    <div class="team-container">
+                        <div class="featured-photos">
+                            <img src="~/public/img/BenCull_square_200x200.jpg" class="img-responsive img-rounded" alt="chandra noor rachman">
+                        </div>
+                        <h3 style="color:#fff">
+                            Ben Cull
+                        </h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

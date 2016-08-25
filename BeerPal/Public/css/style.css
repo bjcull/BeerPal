@@ -59,7 +59,7 @@
 	==================
 */
 body{
-	background: #fff;
+	background: #f5f5f5;
 	margin: 0;
 	padding:0;
 	font: 13px/1.7em 'Open Sans', arial, sans-serif;
@@ -2415,3 +2415,21 @@ blockquote {
 	color: #ffffff;
 }
 
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 43px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 43px;
+  background-color: #f5f5f5;
+}

@@ -33,23 +33,21 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand visible-xs" href="#">Dodolan Manuk</a>
+                <a class="navbar-brand visible-xs" href="~/">BeerPal Brewery</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav nav-left">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="profile.html">Profile</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li class="active"><a href="~/">Home</a></li>
+                    <li><a href="@Url.Action("Index", "Single")">Tour</a></li>
                 </ul>
-                <a href="#" class="logo visible-lg visible-md"><img src="~/public/img/beer-glass.png" alt="dodolan manuk responsive catalog themes"></a>
+                <a href="~/" class="logo visible-lg visible-md"><img src="~/public/img/beer-glass.png" alt="dodolan manuk responsive catalog themes"></a>
                 <div id="brand" class="visible-lg visible-md">&nbsp;</div>
                 <ul class="nav navbar-nav nav-right">
-                    <li><a href="pricing.html">Price</a></li>
-                    <li><a href="order.html">Order</a></li>
-                    <li class="dropdown">
+                    @*<li><a href="pricing.html">Price</a></li>
+                    <li><a href="order.html">Order</a></li>*@
+                    @*<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="product.html">Canary</a></li>
@@ -67,14 +65,11 @@
                             <li><a href="product.html">Pitik</a></li>
                             <li><a href="product.html">Cucak Rowo</a></li>
                         </ul>
-                    </li>
+                    </li>*@
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="blog.html">Blog 1</a></li>
-                            <li><a href="blog2.html">Blog 2</a></li>
-                            <li><a href="single.html">Single 1</a></li>
-                            <li><a href="single2.html">Single 2</a></li>
+                            <li><a href="@Url.Action("Index", "WebExperienceProfiles")">Web Experience Profiles</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -85,43 +80,19 @@
 
 @RenderBody()
 
-<!-- begin:footer -->
-    <div id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3>Need some help?</h3>
-                    <p>If you're implementing PayPal in a real world application and need some help, I'm usually available to lend a hand. </p>
-                </div>
-            </div>
-            <div class="row" id="theteam">
-                <div class="col-sm-offset-4 col-sm-4">
-                    <a href="https://bencull.com" target="_blank">
-                        <div class="team-container">
-                            <div class="featured-photos">
-                                <img src="~/public/img/BenCull_square_200x200.jpg" class="img-responsive img-rounded" alt="chandra noor rachman">
-                            </div>
-                            <h3 style="color:#fff">
-                                Ben Cull
-                            </h3>
-                        </div>
-                    </a>
+    <div class="footer">
+
+        <div id="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <small><a href="https://bencull.com" style="color:#fff">Made with <i class="fa fa-heart"></i> by Ben Cull</a></small>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- end:footer -->
-    <!-- begin:copyright -->
-    <div id="copyright">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <small><a href="https://bencull.com" style="color:#fff">Made with <i class="fa fa-heart"></i> by Ben Cull</a></small>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end:copyright -->
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
