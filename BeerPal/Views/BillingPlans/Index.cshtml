@@ -1,0 +1,49 @@
+﻿@using Newtonsoft.Json
+@model PayPal.Api.PlanList
+
+@{
+    ViewBag.Title = "Billing Plans";
+}
+
+<div class="heads" style="background: url(/public/img/brewery-back1.jpg) 50% 27%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><span>//</span> Billing Plans</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- begin:content -->
+<div class="page-content">
+    <div class="container">
+        <div class="row confirm">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Payment Definitions</th>
+                            <th>Merchant Preferences</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var plan in Model.plans)
+                        {
+                            <tr>
+                                <td>@plan.id</td>
+                                <td>@plan.name</td>
+                                <td>@plan.type</td>
+                                <td>@JsonConvert.SerializeObject(plan.payment_definitions)</td>
+                                <td>@JsonConvert.SerializeObject(plan.merchant_preferences)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

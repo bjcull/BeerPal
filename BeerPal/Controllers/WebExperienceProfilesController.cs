@@ -9,7 +9,6 @@ namespace BeerPal.Controllers
 {
     public class WebExperienceProfilesController : Controller
     {
-        // GET: WebExperienceProfiles
         public ActionResult Index()
         {
             var apiContext = GetApiContext();

@@ -61,8 +61,25 @@
                     </tr>
                     </tfoot>
                 </table>
-                <div class="form-group">                    
-                    <a href="@Url.Action("Checkout", "ECommerce")" class="btn btn-warning">Checkout with PayPal</a>
+                <div class="form-group">
+                    <label>In-line Checkout Experience</label>
+                    <p>
+                        <a href="@Url.Action("Checkout", "ECommerce")" class="btn btn-warning">Checkout with PayPal</a>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Popup Checkout Experience</label>
+                    <form id="myContainer" method="post" action="@Url.Action("Checkout", "ECommerce")"></form>
+                    <script>
+                        window.paypalCheckoutReady = function() {
+                            paypal.checkout.setup('BRKKN32NLUD56',
+                            {
+                                environment: 'sandbox',
+                                container: 'myContainer'
+                            });
+                        };
+                    </script>
+                    <script src="//www.paypalobjects.com/api/checkout.js" async></script>
                 </div>
             </div>
         </div>

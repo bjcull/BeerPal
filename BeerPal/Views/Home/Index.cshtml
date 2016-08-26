@@ -133,16 +133,20 @@
             @foreach (var beer in Model.Beers)
             {
                 <div class="col-md-3 col-sm-4 col-xs-12">
-                    <div class="thumbnail">
-                        <div class="caption-img" style="background: url(/public/img/beer-glass.png);"></div>
-                        <div class="caption-details">
-                            <h3>@beer.Name</h3>
-                            <span class="price">$@((beer.Price / 100).ToString("0.00"))</span>
+                    @using (Html.BeginForm("Add", "ECommerce", FormMethod.Post))
+                    {
+                        @Html.Hidden("BeerId", beer.Id)
+                        <div class="thumbnail">
+                            <div class="caption-img" style="background: url(/public/img/beer-glass.png);"></div>
+                            <div class="caption-details">
+                                <h3>@beer.Name</h3>
+                                <span class="price">$@((beer.Price/100).ToString("0.00"))</span>
+                            </div>
+                            <a href="javascript:void(0);" onclick="$(this).closest('form').submit();">
+                                <div class="caption-link"><i class="fa fa-plus"></i>
+                                </div></a>
                         </div>
-                        <a href="detail.html">
-                            <div class="caption-link"><i class="fa fa-plus"></i>
-                            </div></a>
-                    </div>
+                    }
                 </div>
             }
         </div>
