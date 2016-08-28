@@ -178,11 +178,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SingleController.cs" />
+    <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Controllers\WebExperienceProfilesController.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Beer.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderItem.cs" />
+    <Compile Include="Entities\Subscription.cs" />
     <Compile Include="Entities\Ticket.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -203,6 +205,14 @@
     <Compile Include="Migrations\201608251112205_RemovedUserFromOrder.Designer.cs">
       <DependentUpon>201608251112205_RemovedUserFromOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608271501581_AddedSubscriptions.cs" />
+    <Compile Include="Migrations\201608271501581_AddedSubscriptions.Designer.cs">
+      <DependentUpon>201608271501581_AddedSubscriptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608281029223_AddedSubscriptionToken.cs" />
+    <Compile Include="Migrations\201608281029223_AddedSubscriptionToken.Designer.cs">
+      <DependentUpon>201608281029223_AddedSubscriptionToken.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ECommerce\Cart.cs" />
@@ -212,6 +222,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Single\IndexVm.cs" />
+    <Compile Include="Models\Subscription\IndexVm.cs" />
+    <Compile Include="Models\Subscription\PurchaseVm.cs" />
+    <Compile Include="Models\Subscription\Plan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -318,6 +331,10 @@
     <Content Include="Views\ECommerce\Cancel.cshtml" />
     <Content Include="Views\ECommerce\ThankYou.cshtml" />
     <Content Include="Views\BillingPlans\Index.cshtml" />
+    <Content Include="Views\Subscription\Cancel.cshtml" />
+    <Content Include="Views\Subscription\Index.cshtml" />
+    <Content Include="Views\Subscription\Purchase.cshtml" />
+    <Content Include="Views\Subscription\ThankYou.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -339,6 +356,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608251112205_RemovedUserFromOrder.resx">
       <DependentUpon>201608251112205_RemovedUserFromOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608271501581_AddedSubscriptions.resx">
+      <DependentUpon>201608271501581_AddedSubscriptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608281029223_AddedSubscriptionToken.resx">
+      <DependentUpon>201608281029223_AddedSubscriptionToken.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

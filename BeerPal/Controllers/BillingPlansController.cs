@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,15 +14,48 @@ namespace BeerPal.Controllers
         {
             var apiContext = GetApiContext();
 
-            var list = PayPal.Api.Plan.List(apiContext);
+            var list = PayPal.Api.Plan.List(apiContext, status: "ACTIVE");
 
             if (list == null || !list.plans.Any())
             {
                 SeedBillingPlans(apiContext);
-                list = PayPal.Api.Plan.List(apiContext);
+                list = PayPal.Api.Plan.List(apiContext, status: "ACTIVE");
             }
 
             return View(list);
+        }
+
+        public ActionResult Delete(string id)
+        {
+            var apiContext = GetApiContext();
+
+            var plan = new Plan()
+            {
+                id = id
+            };
+
+            plan.Delete(apiContext);
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteAll()
+        {
+            var apiContext = GetApiContext();
+
+            var list = PayPal.Api.Plan.List(apiContext, status: "ACTIVE");
+
+            foreach (var plan in list.plans)
+            {
+                var deletePlan = new Plan()
+                {
+                    id = plan.id
+                };
+
+                deletePlan.Delete(apiContext);
+            }
+
+            return RedirectToAction("Index");
         }
 
         /// <summary>
@@ -52,6 +86,12 @@ namespace BeerPal.Controllers
                 },
                 merchant_preferences = new MerchantPreferences()
                 {
+                    // The initial payment
+                    setup_fee = new Currency()
+                    {
+                        currency = "USD",
+                        value = "5.00"
+                    },
                     return_url = Url.Action("Return", "Subscription", null, Request.Url.Scheme),
                     cancel_url = Url.Action("Cancel", "Subscription", null, Request.Url.Scheme)
                 }
@@ -80,6 +120,12 @@ namespace BeerPal.Controllers
                 },
                 merchant_preferences = new MerchantPreferences()
                 {
+                    // The initial payment
+                    setup_fee = new Currency()
+                    {
+                        currency = "USD",
+                        value = "24.95"
+                    },
                     return_url = Url.Action("Return", "Subscription", null, Request.Url.Scheme),
                     cancel_url = Url.Action("Cancel", "Subscription", null, Request.Url.Scheme)
                 }
@@ -108,6 +154,12 @@ namespace BeerPal.Controllers
                 },
                 merchant_preferences = new MerchantPreferences()
                 {
+                    // The initial payment
+                    setup_fee = new Currency()
+                    {
+                        currency = "USD",
+                        value = "59.95"
+                    },
                     return_url = Url.Action("Return", "Subscription", null, Request.Url.Scheme),
                     cancel_url = Url.Action("Cancel", "Subscription", null, Request.Url.Scheme)
                 }
@@ -136,15 +188,39 @@ namespace BeerPal.Controllers
                 },
                 merchant_preferences = new MerchantPreferences()
                 {
+                    // The initial payment
+                    setup_fee = new Currency()
+                    {
+                        currency = "USD",
+                        value = "100.00"
+                    },
                     return_url = Url.Action("Return", "Subscription", null, Request.Url.Scheme),
                     cancel_url = Url.Action("Cancel", "Subscription", null, Request.Url.Scheme)
                 }
             };
 
-            justBrowsingPlan.Create(apiContext);
-            letsDoThisPlan.Create(apiContext);
-            beardIncludedPlan.Create(apiContext);
-            hookItToMyVeinsPlan.Create(apiContext);
+            justBrowsingPlan = Plan.Create(apiContext, justBrowsingPlan);
+            letsDoThisPlan = Plan.Create(apiContext, letsDoThisPlan);
+            beardIncludedPlan = Plan.Create(apiContext, beardIncludedPlan);
+            hookItToMyVeinsPlan = Plan.Create(apiContext, hookItToMyVeinsPlan);
+
+            var updateStatePatchRequest = new PatchRequest()
+            {
+                new Patch()
+                {
+                    op = "replace",
+                    path = "/",
+                    value = new Plan
+                    {
+                        state = "ACTIVE"
+                    }
+                }
+            };
+
+            justBrowsingPlan.Update(apiContext, updateStatePatchRequest);
+            letsDoThisPlan.Update(apiContext, updateStatePatchRequest);
+            beardIncludedPlan.Update(apiContext, updateStatePatchRequest);
+            hookItToMyVeinsPlan.Update(apiContext, updateStatePatchRequest);
         }
 
         private APIContext GetApiContext()

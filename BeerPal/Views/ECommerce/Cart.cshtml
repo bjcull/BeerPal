@@ -34,9 +34,9 @@
                     {
                         <tr>
                             <td>@item.Name</td>
-                            <td class="text-right">$@((item.Price / 100).ToString("0.00"))</td>
+                            <td class="text-right">$@((item.Price / 100M).ToString("0.00"))</td>
                             <td class="text-right">@item.Quantity</td>
-                            <td class="text-right">$@(((item.Price * item.Quantity) / 100).ToString("0.00"))</td>                                
+                            <td class="text-right">$@(((item.Price * item.Quantity) / 100M).ToString("0.00"))</td>                                
                             <td class="text-right">
                                 @using (Html.BeginForm("Delete", "ECommerce", FormMethod.Post))
                                 {
@@ -56,7 +56,7 @@
                     <tfoot>
                     <tr>
                         <td colspan="3"><strong>Total</strong></td>
-                        <td class="text-right"><strong>$@((Model.CartItems.Sum(x => x.Price * x.Quantity) / 100).ToString("0.00"))</strong></td>
+                        <td class="text-right"><strong>$@((Model.CartItems.Sum(x => x.Price * x.Quantity) / 100M).ToString("0.00"))</strong></td>
                         <td></td>
                     </tr>
                     </tfoot>

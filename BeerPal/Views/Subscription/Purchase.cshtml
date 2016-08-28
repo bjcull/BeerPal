@@ -1,14 +1,15 @@
-﻿@model BeerPal.Models.Single.IndexVm
+﻿@model BeerPal.Models.Subscription.PurchaseVm
 
 @{
-    ViewBag.Title = "Brewery Tour";
+    ViewBag.Title = "Beer Subscription";
 }
+
 
 <div class="heads" style="background: url(/public/img/brewery-back1.jpg) 50% 27%;">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2><span>//</span> Brewery Tour</h2>
+                <h2><span>//</span> Beer Subscription</h2>
             </div>
         </div>
     </div>
@@ -18,14 +19,16 @@
 <div class="page-content">
     <div class="container">
         <div class="row confirm">
-            <div class="col-md-12">
-                @using (Html.BeginForm("Index", "Single", FormMethod.Post, new {@class = "form-horizontal"}))
+            <div class="col-md-8">
+                @using (Html.BeginForm("Purchase", "Subscription", FormMethod.Post, new {@class = "form-horizontal"}))
                 {
-                    <h3 class="text-center">Ticket for @Model.TourDate.ToString("dddd, dd MMMM yyyy")</h3>
+                    @Html.HiddenFor(x => x.Plan.PayPalPlanId)
+
+                    <h3 class="text-center">@Model.Plan.Name</h3>
                     <hr>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">First Name</label>
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             @Html.TextBoxFor(x => x.FirstName, new {@class = "form-control"})
                             <div class="help-block">
                                 @Html.ValidationMessageFor(x => x.FirstName)
@@ -35,7 +38,7 @@
 
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Last Name</label>
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             @Html.TextBoxFor(x => x.LastName, new {@class = "form-control"})
                             <div class="help-block">
                                 @Html.ValidationMessageFor(x => x.LastName)
@@ -45,7 +48,7 @@
 
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Email</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-9">
                             @Html.TextBoxFor(x => x.Email, new {@class = "form-control"})
                             <div class="help-block">
                                 @Html.ValidationMessageFor(x => x.Email)
@@ -55,12 +58,26 @@
 
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-10">
-                            <button type="submit" class="btn btn-warning">Pay $@((Model.Price/100M).ToString("0.00")) with PayPal</button>
+                            <button type="submit" class="btn btn-warning">Pay $@((Model.Plan.Price/100M).ToString("0.00")) with PayPal</button>
                         </div>
                     </div>
                 }
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 pricing-table">
+                <ul class="list-unstyled">
+                    <li class="head">@Model.Plan.Name</li>
+                    <li class="price">
+                        <sup>$</sup> @((Model.Plan.Price / 100M).ToString("0.00"))
+                        <p>Monthly</p>
+                        <p></p>
+                    </li>
+                    <li>@Model.Plan.NumberOfBeers Beer@(Model.Plan.NumberOfBeers != 1 ? "s" : "")</li>
+                    <li>@Model.Plan.Description1</li>
+                    <li>@Model.Plan.Description2</li>
+                </ul>
             </div>
         </div>
     </div>
 </div>
 <!-- end:content -->
+

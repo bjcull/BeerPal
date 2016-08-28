@@ -4,8 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BeerPal.Models;
-using BeerPal.Models.Home;
+using BeerPal.Models.Subscription;
 using Microsoft.AspNet.Identity.Owin;
+using IndexVm = BeerPal.Models.Home.IndexVm;
 
 namespace BeerPal.Controllers
 {
@@ -17,7 +18,8 @@ namespace BeerPal.Controllers
         {
             var model = new IndexVm()
             {
-                Beers = _dbContext.Beers.ToList()
+                Beers = _dbContext.Beers.ToList(),
+                Plans = Plan.Plans
             };
 
             return View(model);

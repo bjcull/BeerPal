@@ -3,14 +3,8 @@
     ViewBag.Title = "Home Page";
 }
 
-<!-- begin:slider -->
 <div id="home">
     <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
-        @*<ol class="carousel-indicators">
-            <li data-target="#home-slider" data-slide-to="0" class="active"></li>
-            <li data-target="#home-slider" data-slide-to="1"></li>
-            <li data-target="#home-slider" data-slide-to="2"></li>
-        </ol>*@
         <div class="carousel-inner">
             <div class="item active" style="background: url(/public/img/brewery-back1.jpg) 50% 27%;">
                 <div class="container">
@@ -30,32 +24,12 @@
                     </div>
                 </div>
             </div>
-            @*<div class="item" style="background: url(/public/img/img02.jpg);">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="carousel-content">
-                                <h3 class="animated fadeInLeftBig text-left">.Built</h3>
-                                <p class="animated fadeInDownBig text-left">Your own online shop using this catalog theme.<br> Simple and easy cutomize just $12.</p>
-                                <a class="btn btn-warning btn-lg animated fadeInRight" href="#">Learn more &raquo;</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
         </div>
-        @*<a class="left carousel-control" href="#home-slider" data-slide="prev">
-            <i class="fa fa-angle-left"></i>
-        </a>
-        <a class="right carousel-control" href="#home-slider" data-slide="next">
-            <i class="fa fa-angle-right"></i>
-        </a>*@
         <div class="pattern"></div>
     </div>
 
 </div>
-<!-- end:slider -->
-<!-- begin:featured -->
+
 <div id="featured">
     <div class="container">
         <div class="row">
@@ -97,8 +71,7 @@
         </div>
     </div>
 </div>
-<!-- end:featured -->
-<!-- begin:tagline -->
+
 <div id="tagline">
         <div class="container">
             <div class="row">
@@ -117,8 +90,7 @@
             </div>
         </div>
     </div>
-<!-- end:tagline -->
-<!-- begin:catalogue -->
+
 <div id="catalogue">
     <div class="container">
         <div class="row">
@@ -140,7 +112,7 @@
                             <div class="caption-img" style="background: url(/public/img/beer-glass.png);"></div>
                             <div class="caption-details">
                                 <h3>@beer.Name</h3>
-                                <span class="price">$@((beer.Price/100).ToString("0.00"))</span>
+                                <span class="price">$@((beer.Price/100M).ToString("0.00"))</span>
                             </div>
                             <a href="javascript:void(0);" onclick="$(this).closest('form').submit();">
                                 <div class="caption-link"><i class="fa fa-plus"></i>
@@ -153,93 +125,32 @@
     </div>
 </div>
 
-<!-- end:catalogue -->
-<!-- begin:testimoni -->
-@*<div id="testimoni">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="testimoni-icon"><i class="fa fa-quote-left"></i></div>
-                <h3>Our Testimonials</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div id="testi" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <p class="testimoni-item">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <h4>&#8212; John doe, Scriptlabs &#8212;</h4>
-                        </div>
-                        <div class="item">
-                            <p class="testimoni-item">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <h4>&#8212; John doe, Scriptlabs &#8212;</h4>
-                        </div>
-                        <div class="item">
-                            <p class="testimoni-item">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <h4>&#8212; John doe, Scriptlabs &#8212;</h4>
-                        </div>
-                    </div>
-                    <a class="left carousel-control" href="#testi" data-slide="prev">&lsaquo;</a>
-                    <a class="right carousel-control" href="#testi" data-slide="next">&rsaquo;</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>*@
-<!-- end:testimoni -->
-<!-- begin:blog -->
 <div id="blog">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="heading-title">
                     <h2>Beer Delivery Subscription (Subscription Billing)</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                    <p>Beer delivered to your door, can it get any better?</p>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-12 pricing-table">
-                <ul class="list-unstyled">
-                    <li class="head">Just Browsing Plan</li>
-                    <li class="price"><sup>$</sup> 5.00 <p>Monthly</p><p></p></li>
-                    <li>1 Beer</li>
-                    <li>Nothing else</li>
-                    <li>Not even a thank you</li>
-                    <li class="foot"><a href="#" class="btn btn-warning btn-larges">Sign Up</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12 pricing-table">
-                <ul class="list-unstyled popullar">
-                    <li class="head">Let's Do This Plan</li>
-                    <li class="price"><sup>$</sup> 24.95 <p>Monthly</p><p></p></li>
-                    <li>6 Beers</li>
-                    <li>Welcome to the club</li>
-                    <li>Thank you!</li>
-                    <li class="foot"><a href="#" class="btn btn-warning btn-larges">Sign Up</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12 pricing-table">
-                <ul class="list-unstyled">
-                    <li class="head">Beard Included Plan</li>
-                    <li class="price"><sup>$</sup> 59.95 <p>Monthly</p><p></p></li>
-                    <li>24 Beers</li>
-                    <li>This plan used to be a secret</li>
-                    <li>Not anymore I guess</li>
-                    <li class="foot"><a href="#" class="btn btn-warning btn-larges">Sign Up</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12 pricing-table">
-                <ul class="list-unstyled">
-                    <li class="head">Hook It To My Veins! Plan</li>
-                    <li class="price"><sup>$</sup> 100.00 <p>Monthly</p><p></p></li>
-                    <li>48 Beers</li>
-                    <li>My personal plan</li>
-                    <li>Should I just move in?</li>
-                    <li class="foot"><a href="#" class="btn btn-warning btn-larges">Sign Up</a></li>
-                </ul>
-            </div>
+            @foreach (var plan in Model.Plans)
+            {
+                <div class="col-md-3 col-sm-6 col-xs-12 pricing-table">
+                    <ul class="list-unstyled">
+                        <li class="head">@plan.Name</li>
+                        <li class="price"><sup>$</sup> @((plan.Price / 100M).ToString("0.00"))
+                            <p>Monthly</p>
+                            <p></p></li>
+                        <li>@plan.NumberOfBeers Beer@(plan.NumberOfBeers != 1 ? "s" : "")</li>
+                        <li>@plan.Description1</li>
+                        <li>@plan.Description2</li>
+                        <li class="foot"><a href="@Url.Action("Purchase", "Subscription", new {id = plan.PayPalPlanId})" class="btn btn-warning btn-larges">Sign Up</a></li>
+                    </ul>
+                </div>
+            }
         </div>
     </div>
 </div>
