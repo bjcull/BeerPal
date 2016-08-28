@@ -177,7 +177,9 @@
     <Compile Include="Controllers\ECommerceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\SingleController.cs" />
+    <Compile Include="Controllers\SubscribersController.cs" />
     <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Controllers\WebExperienceProfilesController.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
@@ -335,6 +337,9 @@
     <Content Include="Views\Subscription\Index.cshtml" />
     <Content Include="Views\Subscription\Purchase.cshtml" />
     <Content Include="Views\Subscription\ThankYou.cshtml" />
+    <None Include="Views\Sales\Index.cshtml" />
+    <None Include="Views\Subscribers\Details.cshtml" />
+    <None Include="Views\Subscribers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

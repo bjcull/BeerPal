@@ -1,0 +1,52 @@
+﻿@using BeerPal.Models.Subscription
+@model List<BeerPal.Entities.Subscription>
+
+@{
+    ViewBag.Title = "Subscribers";
+}
+
+<div class="heads" style="background: url(/public/img/brewery-back1.jpg) 50% 27%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><span>//</span> Subscribers</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="container">
+        <div class="row confirm">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Created Date</th>
+                            <th>Plan</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.PayPalAgreementId</td>
+                                <td>@item.StartDate</td>
+                                <td>@(Plan.Plans.FirstOrDefault(x => x.PayPalPlanId == item.PayPalPlanId)?.Name ?? "[Deleted Plan]")</td>
+                                <td class="text-right">[STATUS HERE]</td>
+                                <td class="text-right">
+                                    <a href="@Url.Action("Details", "Subscribers" ,new {id=item.PayPalAgreementId})">View Details</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
