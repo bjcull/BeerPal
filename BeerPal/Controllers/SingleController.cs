@@ -62,7 +62,7 @@ namespace BeerPal.Controllers
                             amount = new Amount
                             {
                                 currency = "USD",
-                                total = (tourInfo.Price/100).ToString(), // PayPal expects string amounts, eg. "20.00"
+                                total = (tourInfo.Price/100M).ToString(), // PayPal expects string amounts, eg. "20.00"
                             },
                             item_list = new ItemList()
                             {
@@ -73,7 +73,7 @@ namespace BeerPal.Controllers
                                         description = $"Brewery Tour (Single Payment) for {tourInfo.TourDate:dddd, dd MMMM yyyy}",
                                         currency = "USD",
                                         quantity = "1",
-                                        price = (tourInfo.Price/100).ToString(), // PayPal expects string amounts, eg. "20.00"                                        
+                                        price = (tourInfo.Price/100M).ToString(), // PayPal expects string amounts, eg. "20.00"                                        
                                     }
                                 }
                             }
@@ -81,13 +81,17 @@ namespace BeerPal.Controllers
                     },
                     redirect_urls = new RedirectUrls
                     {
-                        return_url = Url.Action("Return", "Single", new {ticketId = ticket.Id}, Request.Url.Scheme),
-                        cancel_url = Url.Action("Cancel", "Single", new {ticketId = ticket.Id}, Request.Url.Scheme)
+                        return_url = Url.Action("Return", "Single", null, Request.Url.Scheme),
+                        cancel_url = Url.Action("Cancel", "Single", null, Request.Url.Scheme)
                     }
                 };
 
                 // Send the payment to PayPal
                 var createdPayment = payment.Create(apiContext);
+
+                // Save a reference to the paypal payment
+                ticket.PayPalReference = createdPayment.id;
+                _dbContext.SaveChanges();
 
                 // Find the Approval URL to send our user to
                 var approvalUrl =
@@ -101,10 +105,10 @@ namespace BeerPal.Controllers
             return View(model);
         }
 
-        public ActionResult Return(string payerId, string paymentId, int ticketId)
+        public ActionResult Return(string payerId, string paymentId)
         {
             // Fetch the existing ticket
-            var ticket = _dbContext.Tickets.FirstOrDefault(x => x.Id == ticketId);
+            var ticket = _dbContext.Tickets.FirstOrDefault(x => x.PayPalReference == paymentId);
 
             // Get PayPal API Context using configuration from web.config
             var apiContext = GetApiContext();
@@ -123,10 +127,6 @@ namespace BeerPal.Controllers
 
             // Execute the Payment
             var executedPayment = payment.Execute(apiContext, paymentExecution);
-
-            // Set a reference to the PayPal payment so we can look it up later
-            ticket.PayPalReference = executedPayment.id;
-            _dbContext.SaveChanges();
 
             return RedirectToAction("Thankyou");
         }

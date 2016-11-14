@@ -82,11 +82,24 @@ namespace BeerPal.Controllers
 
             if (cart.CartItems.Any())
             {
+                // Flat rate shipping
+                int shipping = 500;
+
+                // Flat rate tax 10%
+                var taxRate = 0.1M;
+
+                var subtotal = cart.CartItems.Sum(x => x.Price*x.Quantity);
+                var tax = Convert.ToInt32((subtotal + shipping)*taxRate);
+                var total = subtotal + shipping + tax;
+
                 // Create an Order object to store info about the shopping cart
                 var order = new BeerPal.Entities.Order()
                 {
                     OrderDate = DateTime.UtcNow,
-                    Total = cart.CartItems.Sum(x => x.Price * x.Quantity),
+                    Subtotal = subtotal,
+                    Shipping = shipping,
+                    Tax = tax,
+                    Total = total,
                     OrderItems = cart.CartItems.Select(x => new OrderItem()
                     {
                         Name = x.Name,
@@ -116,7 +129,13 @@ namespace BeerPal.Controllers
                             amount = new Amount
                             {
                                 currency = "USD",
-                                total = (order.Total/100).ToString(), // PayPal expects string amounts, eg. "20.00"
+                                total = (order.Total/100M).ToString(), // PayPal expects string amounts, eg. "20.00",
+                                details = new Details()
+                                {
+                                    subtotal = (order.Subtotal/100M).ToString(),
+                                    shipping = (order.Shipping/100M).ToString(),
+                                    tax = (order.Tax/100M).ToString()                                    
+                                }
                             },                            
                             item_list = new ItemList()
                             {                                
@@ -126,20 +145,24 @@ namespace BeerPal.Controllers
                                         description = x.Name,
                                         currency = "USD",
                                         quantity = x.Quantity.ToString(),                                        
-                                        price = (x.Price/100).ToString(), // PayPal expects string amounts, eg. "20.00"
+                                        price = (x.Price/100M).ToString(), // PayPal expects string amounts, eg. "20.00"
                                     }).ToList()
                             }
                         }
                     },
                     redirect_urls = new RedirectUrls
                     {
-                        return_url = Url.Action("Return", "ECommerce", new {orderId = order.Id}, Request.Url.Scheme),
-                        cancel_url = Url.Action("Cancel", "ECommerce", new {orderId = order.Id}, Request.Url.Scheme)
+                        return_url = Url.Action("Return", "ECommerce", null, Request.Url.Scheme),
+                        cancel_url = Url.Action("Cancel", "ECommerce", null, Request.Url.Scheme)
                     }
                 };
 
                 // Send the payment to PayPal
                 var createdPayment = payment.Create(apiContext);
+
+                // Save a reference to the paypal payment
+                order.PayPalReference = createdPayment.id;
+                _dbContext.SaveChanges();
 
                 // Find the Approval URL to send our user to
                 var approvalUrl =
@@ -153,10 +176,10 @@ namespace BeerPal.Controllers
             return RedirectToAction("Cart");
         }
 
-        public ActionResult Return(string payerId, string paymentId, int orderId)
+        public ActionResult Return(string payerId, string paymentId)
         {
             // Fetch the existing order
-            var order = _dbContext.Orders.FirstOrDefault(x => x.Id == orderId);
+            var order = _dbContext.Orders.FirstOrDefault(x => x.PayPalReference == paymentId);
 
             // Get PayPal API Context using configuration from web.config
             var apiContext = GetApiContext();
@@ -175,10 +198,6 @@ namespace BeerPal.Controllers
 
             // Execute the Payment
             var executedPayment = payment.Execute(apiContext, paymentExecution);
-
-            // Set a reference to the PayPal payment so we can look it up later
-            order.PayPalReference = executedPayment.id;
-            _dbContext.SaveChanges();
 
             ClearCart();
 

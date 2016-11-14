@@ -2415,6 +2415,10 @@ blockquote {
 	color: #ffffff;
 }
 
+.m-r-20 {
+    margin-right:20px;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

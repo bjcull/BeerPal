@@ -1,0 +1,81 @@
+﻿@model IEnumerable<BeerPal.Entities.WebhookEvent>
+
+@{
+    ViewBag.Title = "Sales";
+}
+
+<div class="heads" style="background: url(/public/img/brewery-back1.jpg) 50% 27%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><span>//</span> Webhook Events</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Simulate Events</h3>
+                <div class="pull-left m-r-20">
+                    @using (Html.BeginForm("SimulateEvent", "WebhookEvents", FormMethod.Post))
+                    {
+                        @Html.Hidden("eventType", "PAYMENT.SALE.REFUNDED")
+                        <button type="submit" class="btn btn-warning">Payment Refunded</button>
+                    }
+                </div>
+                <div class="pull-left m-r-20">
+                    @using (Html.BeginForm("SimulateEvent", "WebhookEvents", FormMethod.Post))
+                    {
+                        @Html.Hidden("eventType", "BILLING.SUBSCRIPTION.CANCELLED")
+                        <button type="submit" class="btn btn-warning">Subscription Cancelled</button>
+                    }
+                </div>
+                <div class="pull-left m-r-20">
+                    @using (Html.BeginForm("SimulateEvent", "WebhookEvents", FormMethod.Post))
+                    {
+                        @Html.Hidden("eventType", "CUSTOMER.DISPUTE.CREATED")
+                        <button type="submit" class="btn btn-warning">Customer Dispute Created</button>
+                    }
+                </div>
+                <p style="clear:both;">Notifications may take a few minutes to appear.</p>
+            </div>
+        </div>
+        <div class="row confirm">
+            <div class="col-md-12">
+                <h3>Received Events</h3>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Created Date</th>
+                        <th>Event Type</th>
+                        <th>Summary</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var webhookEvent in Model)
+                    {
+                        <tr>
+                            <td>@webhookEvent.PayPalWebHookEventId</td>
+                            <td>@webhookEvent.DateCreated (Received: @webhookEvent.DateReceived)</td>
+                            <td>@webhookEvent.EventType</td>
+                            <td>@webhookEvent.Summary</td>
+                            <td class="text-right">
+                                @using (Html.BeginForm("Resend", "WebhookEvents", FormMethod.Post))
+                                {
+                                    @Html.Hidden("webhookEventId", webhookEvent.PayPalWebHookEventId)
+                                    <button type="submit" class="btn btn-warning">Resend</button>
+                                }
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

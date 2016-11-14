@@ -13,12 +13,12 @@ namespace BeerPal.Controllers
         {
             var apiContext = GetApiContext();
 
-            var list = PayPal.Api.WebProfile.GetList(apiContext);
+            var list = WebProfile.GetList(apiContext);
 
             if (!list.Any())
             {
                 SeedWebProfiles(apiContext);
-                list = PayPal.Api.WebProfile.GetList(apiContext);
+                list = WebProfile.GetList(apiContext);
             }
 
             return View(list);

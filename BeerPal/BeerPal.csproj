@@ -18,7 +18,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44361</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -182,12 +182,16 @@
     <Compile Include="Controllers\SubscribersController.cs" />
     <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Controllers\WebExperienceProfilesController.cs" />
+    <Compile Include="Controllers\WebhookEventsController.cs" />
+    <Compile Include="Controllers\WebhooksController.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Beer.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderItem.cs" />
     <Compile Include="Entities\Subscription.cs" />
     <Compile Include="Entities\Ticket.cs" />
+    <Compile Include="Entities\WebhookEvent.cs" />
+    <Compile Include="Extras\SimulatableWebhook.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -215,6 +219,14 @@
     <Compile Include="Migrations\201608281029223_AddedSubscriptionToken.Designer.cs">
       <DependentUpon>201608281029223_AddedSubscriptionToken.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610050827335_AddedShippingAndTax.cs" />
+    <Compile Include="Migrations\201610050827335_AddedShippingAndTax.Designer.cs">
+      <DependentUpon>201610050827335_AddedShippingAndTax.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610131512574_AddedWebHooks.cs" />
+    <Compile Include="Migrations\201610131512574_AddedWebHooks.Designer.cs">
+      <DependentUpon>201610131512574_AddedWebHooks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ECommerce\Cart.cs" />
@@ -241,6 +253,12 @@
     <Content Include="Public\css\font-awesome.css" />
     <Content Include="Public\css\responsive.css" />
     <Content Include="Public\css\style.css" />
+    <Content Include="Public\css\wizard.css">
+      <DependentUpon>wizard.less</DependentUpon>
+    </Content>
+    <Content Include="Public\css\wizard.min.css">
+      <DependentUpon>wizard.css</DependentUpon>
+    </Content>
     <Content Include="Public\fonts\fontawesome-webfont.svg" />
     <Content Include="Public\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Public\img\avatar.jpg" />
@@ -278,6 +296,11 @@
     <Content Include="Public\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Public\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Public\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Public\css\wizard.less" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -340,6 +363,8 @@
     <None Include="Views\Sales\Index.cshtml" />
     <None Include="Views\Subscribers\Details.cshtml" />
     <None Include="Views\Subscribers\Index.cshtml" />
+    <Content Include="Views\Webhooks\Index.cshtml" />
+    <None Include="Views\WebhookEvents\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -367,6 +392,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608281029223_AddedSubscriptionToken.resx">
       <DependentUpon>201608281029223_AddedSubscriptionToken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610050827335_AddedShippingAndTax.resx">
+      <DependentUpon>201610050827335_AddedShippingAndTax.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610131512574_AddedWebHooks.resx">
+      <DependentUpon>201610131512574_AddedWebHooks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

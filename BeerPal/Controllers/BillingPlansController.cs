@@ -59,7 +59,7 @@ namespace BeerPal.Controllers
         }
 
         /// <summary>
-        /// Create the default web experience profiles for this example website
+        /// Create the default billing plans for this example website
         /// </summary>
         private void SeedBillingPlans(APIContext apiContext)
         {

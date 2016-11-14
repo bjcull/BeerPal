@@ -32,6 +32,7 @@ namespace BeerPal.Models
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Beer> Beers { get; set; }
         public DbSet<Entities.Subscription> Subscriptions { get; set; }
+        public DbSet<WebhookEvent> WebhookEvents { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
