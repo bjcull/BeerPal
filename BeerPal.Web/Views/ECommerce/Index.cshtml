@@ -1,0 +1,49 @@
+﻿@model BeerPal.Models.ECommerce.IndexVm
+
+@{
+    ViewBag.Title = "Beers";
+}
+
+<div class="heads" style="background: url(/public/img/brewery-back1.jpg) 50% 27%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><span>//</span> Beers for Sale</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="container">
+        <div class="row confirm">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Beer</th>
+                            <th class="text-right">Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Beers)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td class="text-right">$@((item.Price / 100M).ToString("0.00"))</td>
+                                <td class="text-right">
+                                    @using (Html.BeginForm("Add", "ECommerce", FormMethod.Post))
+                                    {
+                                        @Html.Hidden("BeerId", item.Id)
+                                        <button type="submit" class="btn btn-warning">Add to cart</button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

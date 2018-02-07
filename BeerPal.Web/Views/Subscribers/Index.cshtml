@@ -1,0 +1,50 @@
+﻿@using BeerPal.Web.Entities
+@model BeerPal.Web.Models.Subscribers.IndexVm
+
+@{
+    ViewBag.Title = "Subscribers";
+}
+
+<div class="heads" style="background: url(/img/brewery-back1.jpg) 50% 27%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><span>//</span> Subscribers</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="container">
+        <div class="row confirm">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Created Date</th>
+                            <th>Plan</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Subscriptions)
+                        {
+                            <tr>
+                                <td>@item.PayPalAgreementId</td>
+                                <td>@item.StartDate</td>
+                                <td>@(Model.BillingPlans.FirstOrDefault(x => x.PayPalPlanId == item.PayPalPlanId)?.Name ?? "[Deleted Plan]")</td>
+                                <td class="text-right">
+                                    <a href="@Url.Action("Details", "Subscribers" ,new {id=item.PayPalAgreementId})">View Details</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,53 @@
+﻿@using Newtonsoft.Json
+@model PayPal.Api.WebhookList
+
+@{
+    ViewBag.Title = "Web Experience Profiles";
+}
+
+<div class="heads" style="background: url(/public/img/brewery-back1.jpg) 50% 27%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><span>//</span> Webhooks</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- begin:content -->
+<div class="page-content">
+    <div class="container">
+        <div class="row confirm">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>URL</th>
+                            <th>Event Types</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var webhook in Model.webhooks)
+                        {
+                            <tr>
+                                <td>@webhook.id</td>
+                                <td>@webhook.url</td>
+                                <td>@JsonConvert.SerializeObject(webhook.event_types)</td>
+                                <td class="text-right">
+                                    @using (Html.BeginForm("Delete", "Webhooks", FormMethod.Post))
+                                    {
+                                        @Html.Hidden("webhookId", webhook.id)
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

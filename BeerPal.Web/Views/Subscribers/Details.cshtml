@@ -1,0 +1,34 @@
+﻿@using Newtonsoft.Json
+@using PayPal.BillingAgreements
+@model PayPal.BillingAgreements.Agreement
+
+@{
+    ViewBag.Title = "Subscription Details";
+}
+
+<div class="heads" style="background: url(/img/brewery-back1.jpg) 50% 27%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><span>//</span> Subscription Details</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="container">
+        <div class="row confirm">
+            <div class="col-md-12">
+                <a href="@Url.Action("Suspend", "Subscribers", new {id=Model.Id})" @(Model.State != "Active" ? "disabled" : "") class="btn btn-warning">Suspend</a>
+                <a href="@Url.Action("Reactivate", "Subscribers", new {id=Model.Id})" @(Model.State != "Suspended" ? "disabled" : "") class="btn btn-warning">Re-activate</a>
+                <a href="@Url.Action("Cancel", "Subscribers", new {id=Model.Id})" @(Model.State != "Cancelled" ? "" : "disabled") class="btn btn-warning">Cancel</a>
+            </div>
+        </div>
+        <div class="row confirm">
+            <div class="col-md-12">
+                <pre>@JsonConvert.SerializeObject(Model, Formatting.Indented)</pre>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+﻿@using Newtonsoft.Json
+@model BeerPal.Models.ECommerce.Cart
+
+@{
+    ViewBag.Title = "Shopping Cart";
+}
+
+<div class="heads" style="background: url(/public/img/brewery-back1.jpg) 50% 27%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><span>//</span> Shopping Cart</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="container">
+        <div class="row confirm">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Beer</th>
+                        <th class="text-right">Price</th>
+                        <th class="text-right">Quantity</th>
+                        <th class="text-right">Sub Total</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model.CartItems)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td class="text-right">$@((item.Price / 100M).ToString("0.00"))</td>
+                            <td class="text-right">@item.Quantity</td>
+                            <td class="text-right">$@(((item.Price * item.Quantity) / 100M).ToString("0.00"))</td>                                
+                            <td class="text-right">
+                                @using (Html.BeginForm("Delete", "ECommerce", FormMethod.Post))
+                                {
+                                    @Html.Hidden("BeerId", item.BeerId)
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                }
+                            </td>
+                        </tr>
+                    }
+                    @if (!Model.CartItems.Any())
+                    {
+                        <tr>
+                            <td colspan="5">No items in shopping cart</td>
+                        </tr>
+                    }
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="3"><strong>Total</strong></td>
+                        <td class="text-right"><strong>$@((Model.CartItems.Sum(x => x.Price * x.Quantity) / 100M).ToString("0.00"))</strong></td>
+                        <td></td>
+                    </tr>
+                    </tfoot>
+                </table>
+                <div class="form-group">
+                    <label>In-line Checkout Experience</label>
+                    <p>
+                        <a href="@Url.Action("Checkout", "ECommerce")" class="btn btn-warning">Checkout with PayPal</a>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Popup Checkout Experience</label>
+                    <form id="myContainer" method="post" action="@Url.Action("Checkout", "ECommerce")"></form>
+                    <script>
+                        window.paypalCheckoutReady = function() {
+                            paypal.checkout.setup('BRKKN32NLUD56',
+                            {
+                                environment: 'sandbox',
+                                container: 'myContainer'
+                            });
+                        };
+                    </script>
+                    <script src="//www.paypalobjects.com/api/checkout.js" async></script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
