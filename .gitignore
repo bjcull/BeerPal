@@ -301,3 +301,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+BeerPal.Web/appsettings.Development.json

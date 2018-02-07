@@ -1,0 +1,182 @@
+﻿@model BeerPal.Web.Models.Home.IndexVm
+@{
+    ViewBag.Title = "BeerPal - Stripe";
+}
+
+<div id="home">
+    <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active" style="background: url(/img/brewery-back1.jpg) 50% 27%;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="carousel-content">
+                                <h2 class="animated fadeInUpBig text-center text-black">BeerPal Brewery</h2>
+                                <p class="animated fadeInUpBig text-black text-center">
+                                    A Pluralsight Course for How to Integrate Stripe and ASP.NET Core MVC
+                                </p>
+                                <p class="text-center animated fadeInUpBig"><a href="https://bencull.com">Made with <i class="fa fa-heart"></i> by Ben Cull</a></p>
+                                <p class="text-center animated fadeInUpBig" style="margin-top:40px;">
+                                    <a class="btn btn-warning btn-lg" href="">Go to Pluralsight Course</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pattern"></div>
+    </div>
+
+</div>
+
+<div id="featured">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-title">
+                    <h2>Integration Options</h2>
+                    <p>I demonstrate three ways to integrate with Stripe.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div class="featured-container">
+                    <div class="featured-photos">
+                        <i class="fa fa-money"></i>
+                    </div>
+                    <h3>Single Payment</h3>
+                    <p>Take a one off payment.</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="featured-container">
+                    <div class="featured-photos">
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-Commerce</h3>
+                    <p>Shopping cart style checkout process, one off payment, but shows products selected.</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="featured-container">
+                    <div class="featured-photos">
+                        <i class="fa fa-refresh"></i>
+                    </div>
+                    <h3>Subscription</h3>
+                    <p>Sign up customers to a recurring billing plan.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="tagline">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="~/img/brewery-back1.jpg" class="img-responsive"/>
+                </div>
+                <div class="col-md-8">
+                    <h2>Brewery Tour (Single Payment)</h2>
+                    <p>Come along for a great tour of our brewery.</p>
+                    <h3>Next Event</h3>
+                    <ul>
+                        <li>@(DateTime.Today.AddDays(1).ToString("dddd, dd MMMM yyyy"))</li>
+                    </ul>
+                    <a href="@Url.Action("Index", "Single")" class="btn btn-warning btn-lg">Buy Ticket Now ($20)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div id="catalogue">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-title">
+                    <h2>Online Beer Shopping (E-Commerce)</h2>
+                    <p>The best of the beers most wanted in @DateTime.Today.Year</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var beer in Model.Beers)
+            {
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    @using (Html.BeginForm("Add", "ECommerce", FormMethod.Post))
+                    {
+                        @Html.Hidden("BeerId", beer.Id)
+                        <div class="thumbnail">
+                            <div class="caption-img" style="background: url(/img/beer-glass.png);"></div>
+                            <div class="caption-details">
+                                <h3>@beer.Name</h3>
+                                <span class="price">$@((beer.Price/100M).ToString("0.00"))</span>
+                            </div>
+                            <a href="javascript:void(0);" onclick="$(this).closest('form').submit();">
+                                <div class="caption-link"><i class="fa fa-plus"></i>
+                                </div></a>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div id="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-title">
+                    <h2>Beer Delivery Subscription (Subscription Billing)</h2>
+                    <p>Beer delivered to your door, can it get any better?</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var plan in Model.Plans)
+            {
+                <div class="col-md-3 col-sm-6 col-xs-12 pricing-table">
+                    <ul class="list-unstyled">
+                        <li class="head">@plan.Name</li>
+                        <li class="price"><sup>$</sup> @((plan.Price / 100M).ToString("0.00"))
+                            <p>Monthly</p>
+                            <p></p></li>
+                        <li>@plan.NumberOfBeers Beer@(plan.NumberOfBeers != 1 ? "s" : "")</li>
+                        <li>@plan.Description1</li>
+                        <li>@plan.Description2</li>
+                        <li class="foot"><a href="@Url.Action("Purchase", "Subscription", new {id = plan.PayPalPlanId})" class="btn btn-warning btn-larges">Sign Up</a></li>
+                    </ul>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- end:blog -->
+
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Need some help?</h3>
+                <p>If you're implementing Stripe in a real world application and need some help, I'm usually available to lend a hand. </p>
+            </div>
+        </div>
+        <div class="row" id="theteam">
+            <div class="col-sm-offset-4 col-sm-4">
+                <a href="https://bencull.com" target="_blank">
+                    <div class="team-container">
+                        <div class="featured-photos">
+                            <img src="~/img/BenCull_square_200x200.jpg" class="img-responsive img-rounded" alt="chandra noor rachman">
+                        </div>
+                        <h3 style="color:#fff">
+                            Ben Cull
+                        </h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -11,9 +11,10 @@ using System;
 namespace BeerPal.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180207040256_AddedStripeBillingPlanId")]
+    partial class AddedStripeBillingPlanId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -169,12 +170,6 @@ namespace BeerPal.Web.Migrations
                     b.Property<string>("PayPalPlanId");
 
                     b.Property<DateTime>("StartDate");
-
-                    b.Property<string>("StripeCustomerId");
-
-                    b.Property<string>("StripePlanId");
-
-                    b.Property<string>("StripeSubscriptionId");
 
                     b.HasKey("Id");
 

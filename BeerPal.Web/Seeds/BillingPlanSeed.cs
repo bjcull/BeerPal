@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BeerPal.Web.Entities;
 using PayPal.BillingPlans;
+using Stripe;
 
 namespace BeerPal.Web.Seeds
 {
@@ -188,6 +189,38 @@ namespace BeerPal.Web.Seeds
                     CancelUrl = cancelUrl
                 }
             }
+        };
+
+        public static List<StripePlanCreateOptions> StripePlans() => new List<StripePlanCreateOptions>()
+        {
+            new StripePlanCreateOptions()
+            {
+                Name = "Just Browsing Plan",
+                Amount = 500,
+                Currency = "USD",
+                Interval = "month"
+            },
+            new StripePlanCreateOptions()
+            {
+                Name = "Let's Do This Plan",
+                Amount = 2495,
+                Currency = "USD",
+                Interval = "month"
+            },
+            new StripePlanCreateOptions()
+            {
+                Name = "Beard Included Plan",
+                Amount = 5995,
+                Currency = "USD",
+                Interval = "month"
+            },
+            new StripePlanCreateOptions()
+            {
+                Name = "Hook It To My Veins Plan",
+                Amount = 10000,
+                Currency = "USD",
+                Interval = "month"
+            },
         };
     }
 }

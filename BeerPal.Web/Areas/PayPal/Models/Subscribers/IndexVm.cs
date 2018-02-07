@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using BeerPal.Web.Entities;
 
-namespace BeerPal.Web.Models.Subscribers
+namespace BeerPal.Web.Areas.PayPal.Models.Subscribers
 {
     public class IndexVm
     {

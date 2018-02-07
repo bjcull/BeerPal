@@ -1,0 +1,47 @@
+﻿@model BeerPal.Web.Models.Subscription.IndexVm
+
+@{
+    ViewBag.Title = "Subscription Plans";
+}
+
+<div class="heads" style="background: url(/img/brewery-back1.jpg) 50% 27%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><span>//</span> Beer Subscriptions</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="container">
+        <div class="row confirm">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Plan</th>
+                            <th>Description</th>
+                            <th class="text-right">Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Plans)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@(item.NumberOfBeers) beer(s) delivered to your door. @(item.Description1). @item.Description2</td>
+                                <td class="text-right">$@((item.Price / 100M).ToString("0.00"))</td>
+                                <td class="text-right">
+                                    <a href="@Url.Action("Purchase", "Subscription", new {id = item.StripePlanId})" class="btn btn-warning">Subscribe</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

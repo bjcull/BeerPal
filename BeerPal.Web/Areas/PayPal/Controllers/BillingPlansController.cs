@@ -8,8 +8,9 @@ using Microsoft.ApplicationInsights.AspNetCore.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using PayPal.BillingPlans;
 
-namespace BeerPal.Web.Controllers
+namespace BeerPal.Web.Areas.PayPal.Controllers
 {
+    [Area("paypal")]
     public class BillingPlansController : Controller
     {
         private readonly PayPalHttpClientFactory _clientFactory;

@@ -1,0 +1,49 @@
+﻿@using Newtonsoft.Json
+@model Stripe.StripeList<Stripe.StripePlan>
+
+@{
+    ViewBag.Title = "Billing Plans";
+}
+
+<div class="heads" style="background: url(/img/brewery-back1.jpg) 50% 27%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><span>//</span> Billing Plans</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- begin:content -->
+<div class="page-content">
+    <div class="container">
+        <div class="row confirm">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Interval</th>
+                            <th>Metadata</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var plan in Model.Data)
+                        {
+                            <tr>
+                                <td>@plan.Id</td>
+                                <td>@plan.Name</td>
+                                <td>@plan.Amount @plan.Currency</td>
+                                <td>@plan.Interval</td>
+                                <td>@JsonConvert.SerializeObject(plan.Metadata)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

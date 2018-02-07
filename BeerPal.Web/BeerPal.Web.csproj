@@ -6,7 +6,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
     <PackageReference Include="PayPal" Version="2.0.0-beta00" />
+    <PackageReference Include="Stripe.net" Version="12.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,11 +16,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Home\About.cshtml" />
-    <None Include="Views\Home\Contact.cshtml" />
-    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Areas\PayPal\Views\Home\About.cshtml" />
+    <None Include="Areas\PayPal\Views\Home\Contact.cshtml" />
+    <None Include="Areas\PayPal\Views\Home\Index.cshtml" />
     <None Include="wwwroot\js\site.js" />
     <None Include="wwwroot\js\site.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\PayPal\Data\" />
+    <Folder Include="Areas\Stripe\Data\" />
   </ItemGroup>
 
 </Project>

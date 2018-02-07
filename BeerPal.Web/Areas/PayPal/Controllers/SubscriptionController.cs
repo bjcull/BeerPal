@@ -2,16 +2,15 @@
 using System.Linq;
 using System.Threading.Tasks;
 using BeerPal.Web.Entities;
-using BeerPal.Web.Models;
 using BeerPal.Web.Models.Subscription;
 using BeerPal.Web.Services;
-using BraintreeHttp;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using PayPal.BillingAgreements;
 
-namespace BeerPal.Web.Controllers
+namespace BeerPal.Web.Areas.PayPal.Controllers
 {
+    [Area("paypal")]
     public class SubscriptionController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
@@ -69,7 +68,7 @@ namespace BeerPal.Web.Controllers
                     Name = plan.Name,
                     Description = $"{plan.NumberOfBeers} beer(s) delivered for ${(plan.Price/100M).ToString("0.00")} each month.",
                     StartDate = startDate.ToString("yyyy-MM-ddTHH:mm:ssZ"),
-                    Plan = new PayPal.BillingAgreements.Plan()
+                    Plan = new global::PayPal.BillingAgreements.Plan()
                     {
                         Id = plan.PayPalPlanId
                     },

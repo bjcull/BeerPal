@@ -1,23 +1,28 @@
 ﻿using System.Linq;
 using BeerPal.Web.Entities;
-using BeerPal.Web.Models;
-using BeerPal.Web.Models.Subscription;
+using BeerPal.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using IndexVm = BeerPal.Web.Models.Home.IndexVm;
 
-namespace BeerPal.Web.Controllers
+namespace BeerPal.Web.Areas.PayPal.Controllers
 {
+    [Area("paypal")]
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
+        private readonly GatewaySwitchService _gatewaySwitchService;
 
-        public HomeController(ApplicationDbContext dbContext)
+        public HomeController(ApplicationDbContext dbContext, GatewaySwitchService gatewaySwitchService)
         {
             _dbContext = dbContext;
+            _gatewaySwitchService = gatewaySwitchService;
         }
 
         public ActionResult Index()
         {
+            //Set current gateway
+            _gatewaySwitchService.SetCurrentGateway(HttpContext.Session, Gateway.PayPal);
+
             var model = new IndexVm()
             {
                 Beers = _dbContext.Beers.ToList(),

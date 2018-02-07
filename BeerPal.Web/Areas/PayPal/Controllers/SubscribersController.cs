@@ -1,14 +1,14 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using BeerPal.Web.Areas.PayPal.Models.Subscribers;
 using BeerPal.Web.Entities;
-using BeerPal.Web.Models;
-using BeerPal.Web.Models.Subscribers;
 using BeerPal.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using PayPal.BillingAgreements;
 
-namespace BeerPal.Web.Controllers
+namespace BeerPal.Web.Areas.PayPal.Controllers
 {
+    [Area("paypal")]
     public class SubscribersController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
@@ -25,7 +25,9 @@ namespace BeerPal.Web.Controllers
             var model = new IndexVm()
             {
                 BillingPlans = _dbContext.BillingPlans.ToList(),
-                Subscriptions = _dbContext.Subscriptions.OrderByDescending(x => x.StartDate).Take(50).ToList()
+                Subscriptions = _dbContext.Subscriptions
+                    .Where(x => !string.IsNullOrEmpty(x.PayPalAgreementId))
+                    .OrderByDescending(x => x.StartDate).Take(50).ToList()
             };
 
             return View(model);

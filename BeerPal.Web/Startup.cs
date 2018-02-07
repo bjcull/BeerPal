@@ -41,12 +41,21 @@ namespace BeerPal.Web
                 Configuration["PayPal:ClientSecret"], 
                 Convert.ToBoolean(Configuration["PayPal:IsLive"]))); // Is Live Environment?
 
+            // Add Stripe Client factory
+            services.AddSingleton(factory => new StripeApiFactory(
+                Configuration["Stripe:SecretKey"],
+                Configuration["Stripe:PublishableKey"]));
+
             services.AddTransient<SeedDatabaseService>();
+            services.AddTransient<GatewaySwitchService>();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseSession();
+
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
@@ -58,9 +67,13 @@ namespace BeerPal.Web
             }
 
             app.UseStaticFiles();
-
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "areas",
+                    template: "{area=paypal}/{controller=Home}/{action=Index}/{id?}"
+                );
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
