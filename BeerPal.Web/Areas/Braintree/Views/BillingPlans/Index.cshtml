@@ -1,0 +1,48 @@
+﻿@using Newtonsoft.Json
+@model List<Braintree.Plan>
+
+@{
+    ViewBag.Title = "Billing Plans";
+}
+
+<div class="heads" style="background: url(/img/brewery-back1.jpg) 50% 27%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><span>//</span> Billing Plans</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- begin:content -->
+<div class="page-content">
+    <div class="container">
+        <div class="row confirm">
+            <div class="col-md-12">
+                <p>Braintree plans must be added manually via the developer portal.</p>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var plan in Model)
+                    {
+                        <tr>
+                            <td>@plan.Id</td>
+                            <td>@plan.Name</td>
+                            <td>@plan.Price @plan.CurrencyIsoCode</td>
+                            <td>@plan.Description</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

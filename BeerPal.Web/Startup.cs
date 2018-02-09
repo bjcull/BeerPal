@@ -35,16 +35,22 @@ namespace BeerPal.Web
 
             services.AddMvc();
 
-            // Add PayPal Client Factory.
+            // Add PayPal client factory.
             services.AddSingleton(factory => new PayPalHttpClientFactory(
                 Configuration["PayPal:ClientId"], 
                 Configuration["PayPal:ClientSecret"], 
                 Convert.ToBoolean(Configuration["PayPal:IsLive"]))); // Is Live Environment?
 
-            // Add Stripe Client factory
+            // Add Stripe client factory
             services.AddSingleton(factory => new StripeApiFactory(
                 Configuration["Stripe:SecretKey"],
                 Configuration["Stripe:PublishableKey"]));
+
+            // Add Braintree client factory
+            services.AddSingleton(factory => new BraintreeApiFactory(
+                Configuration["Braintree:MerchantId"],
+                Configuration["Braintree:PublicKey"],
+                Configuration["Braintree:PrivateKey"]));
 
             services.AddTransient<SeedDatabaseService>();
             services.AddTransient<GatewaySwitchService>();

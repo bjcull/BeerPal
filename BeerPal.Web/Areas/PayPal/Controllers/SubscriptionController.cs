@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using BeerPal.Web.Areas.PayPal.Models.Subscription;
 using BeerPal.Web.Entities;
 using BeerPal.Web.Models.Subscription;
 using BeerPal.Web.Services;

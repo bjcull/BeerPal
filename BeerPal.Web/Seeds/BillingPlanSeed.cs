@@ -18,7 +18,8 @@ namespace BeerPal.Web.Seeds
                 Price = 500,
                 NumberOfBeers = 1,
                 Description1 = "Nothing else",
-                Description2 = "Not even a thank you"
+                Description2 = "Not even a thank you",
+                BraintreePlanId = "just-browsing"
             },
             new BillingPlan()
             {
@@ -26,7 +27,8 @@ namespace BeerPal.Web.Seeds
                 Price = 2495,
                 NumberOfBeers = 6,
                 Description1 = "Welcome to the club",
-                Description2 = "Thank you!"
+                Description2 = "Thank you!",
+                BraintreePlanId = "lets-do-this"
             },
             new BillingPlan()
             {
@@ -34,7 +36,8 @@ namespace BeerPal.Web.Seeds
                 Price = 5995,
                 NumberOfBeers = 24,
                 Description1 = "This plan used to be a secret",
-                Description2 = "Not anymore I guess"
+                Description2 = "Not anymore I guess",
+                BraintreePlanId = "beard-included"
             },
             new BillingPlan()
             {
@@ -42,7 +45,8 @@ namespace BeerPal.Web.Seeds
                 Price = 10000,
                 NumberOfBeers = 48,
                 Description1 = "My personal plan",
-                Description2 = "Should I just move in?"
+                Description2 = "Should I just move in?",
+                BraintreePlanId = "hook-it-to-my-veins"
             }
         };
 

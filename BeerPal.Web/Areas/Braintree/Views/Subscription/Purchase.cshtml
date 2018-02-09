@@ -1,5 +1,4 @@
-﻿@using BeerPal.Web.Areas.PayPal.Models.Subscription
-@model BeerPal.Web.Areas.PayPal.Models.Subscription.PurchaseVm
+﻿@model BeerPal.Web.Areas.Braintree.Models.Subscription.PurchaseVm
 
 @{
     ViewBag.Title = "Beer Subscription";
@@ -23,7 +22,7 @@
             <div class="col-md-8">
                 @using (Html.BeginForm("Purchase", "Subscription", FormMethod.Post, new {@class = "form-horizontal"}))
                 {
-                    @Html.HiddenFor(x => x.Plan.PayPalPlanId)
+                    @Html.HiddenFor(x => x.Plan.BraintreePlanId)
 
                     <h3 class="text-center">@Model.Plan.Name</h3>
                     <hr>
@@ -59,7 +58,33 @@
 
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-10">
-                            <button type="submit" class="btn btn-warning">Pay $@((Model.Plan.Price/100M).ToString("0.00")) with PayPal</button>
+                            <form action="@Url.Action("Purchase", "Subscription")" method="POST">
+                                @Html.HiddenFor(x => x.BraintreeNonce)
+                                <div id="dropin-container"></div>
+                                <button type="submit" id="submit-button" class="btn btn-primary">Pay $@((Model.Plan.Price / 100M).ToString("0.00")) with Braintree</button>
+                                <script>
+                                    $(function() {
+                                        braintree.dropin.create({
+                                                authorization: '@Model.ClientAuthToken',
+                                                container: '#dropin-container'
+                                            },
+                                            function(createErr, instance) {
+                                                $(document).on('submit', 'form', function(event) {
+                                                    event.preventDefault();
+
+                                                    instance.requestPaymentMethod(
+                                                        function(requestPaymentMethodErr, payload) {
+                                                            // Submit payload.nonce to your server
+                                                            if (payload && payload.nonce) {
+                                                                $("#BraintreeNonce").val(payload.nonce);
+                                                                event.target.submit();
+                                                            }
+                                                        });
+                                                });
+                                            });
+                                    });
+                                </script>
+                            </form>
                         </div>
                     </div>
                 }

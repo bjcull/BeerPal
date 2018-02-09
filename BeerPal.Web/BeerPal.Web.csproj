@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Braintree" Version="3.10.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
     <PackageReference Include="PayPal" Version="2.0.0-beta00" />
@@ -25,6 +26,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\PayPal\Data\" />
+    <Folder Include="Areas\Braintree\Data\" />
     <Folder Include="Areas\Stripe\Data\" />
   </ItemGroup>
 

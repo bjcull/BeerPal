@@ -1,4 +1,4 @@
-﻿@using TempAuth1.Views.Manage
+﻿@using BeerPal.Web.Views.Manage
 @inject SignInManager<ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();

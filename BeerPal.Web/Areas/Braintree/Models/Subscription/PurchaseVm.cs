@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using BeerPal.Web.Entities;
 
-namespace BeerPal.Web.Models.Subscription
+namespace BeerPal.Web.Areas.Braintree.Models.Subscription
 {
     public class PurchaseVm
     {
@@ -11,7 +11,10 @@ namespace BeerPal.Web.Models.Subscription
         public string LastName { get; set; }
         [Required]
         public string Email { get; set; }
+        [Required] 
+        public string BraintreeNonce { get; set; }
 
         public BillingPlan Plan { get; set; }
+        public string ClientAuthToken { get; set; }
     }
 }

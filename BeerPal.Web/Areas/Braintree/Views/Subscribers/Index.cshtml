@@ -1,0 +1,51 @@
+﻿@using BeerPal.Web.Areas.Braintree.Models.Subscribers
+@using BeerPal.Web.Entities
+@model BeerPal.Web.Areas.Braintree.Models.Subscribers.IndexVm
+
+@{
+    ViewBag.Title = "Subscribers";
+}
+
+<div class="heads" style="background: url(/img/brewery-back1.jpg) 50% 27%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><span>//</span> Subscribers</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="container">
+        <div class="row confirm">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Subscription ID</th>
+                            <th>Created Date</th>
+                            <th>Plan</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Subscriptions)
+                        {
+                            <tr>
+                                <td>@item.StripeSubscriptionId</td>
+                                <td>@item.StartDate</td>
+                                <td>@(Model.BillingPlans.FirstOrDefault(x => x.BraintreePlanId == item.BraintreePlanId)?.Name ?? "[Deleted Plan]")</td>
+                                <td class="text-right">
+                                    <a href="@Url.Action("Details", "Subscribers" ,new {id=item.BraintreeSubscriptionId})">View Details</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

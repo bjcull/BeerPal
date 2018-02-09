@@ -16,5 +16,9 @@ namespace BeerPal.Web.Entities
         public string StripePlanId { get; set; }
         public string StripeCustomerId { get; set; }
         public string StripeSubscriptionId { get; set; }
+
+        public string BraintreePlanId { get; set; }
+        public string BraintreeCustomerId { get; set; }
+        public string BraintreeSubscriptionId { get; set; }
     }
 }
