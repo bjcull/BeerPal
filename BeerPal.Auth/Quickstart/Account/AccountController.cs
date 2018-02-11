@@ -23,7 +23,7 @@ using BeerPal.Data.Entities;
 
 namespace IdentityServer4.Quickstart.UI
 {
-    [SecurityHeaders]
+    
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;

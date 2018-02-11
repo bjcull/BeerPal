@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IdentityServer4.Quickstart.UI
 {
-    [SecurityHeaders]
+    
     [Authorize]
     public class DiagnosticsController : Controller
     {

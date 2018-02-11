@@ -5,12 +5,14 @@ using BeerPal.Data.Entities;
 using BeerPal.Web.Areas.PayPal.Models.Subscription;
 using BeerPal.Web.Models.Subscription;
 using BeerPal.Web.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using PayPal.BillingAgreements;
 
 namespace BeerPal.Web.Areas.PayPal.Controllers
 {
+    [Authorize]
     [Area("paypal")]
     public class SubscriptionController : Controller
     {
