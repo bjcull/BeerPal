@@ -13,7 +13,7 @@ namespace BeerPal.Web.Entities
         public DbSet<WebhookEvent> WebhookEvents { get; set; }
         public DbSet<BillingPlan> BillingPlans { get; set; }
 
-        public ApplicationDbContext(DbContextOptions options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }

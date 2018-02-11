@@ -302,3 +302,5 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 BeerPal.Web/appsettings.Development.json
+BeerPal.Api/appsettings.Development.json
+BeerPal.Auth/appsettings.Development.json
