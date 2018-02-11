@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using BeerPal.Web.Entities;
+using BeerPal.Data.Entities;
 
 namespace BeerPal.Web.Areas.Stripe.Models.Subscribers
 {
     public class IndexVm
     {
         public List<BillingPlan> BillingPlans { get; set; } = new List<BillingPlan>();
-        public List<Entities.Subscription> Subscriptions { get; set; } = new List<Entities.Subscription>();
+        public List<Data.Entities.Subscription> Subscriptions { get; set; } = new List<Data.Entities.Subscription>();
     }
 }

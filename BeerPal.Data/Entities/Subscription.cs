@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BeerPal.Web.Entities
+namespace BeerPal.Data.Entities
 {
     public class Subscription : BaseEntity
     {

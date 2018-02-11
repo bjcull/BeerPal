@@ -11,8 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BeerPal.Auth.Resources;
 using BeerPal.Auth.Services;
-using BeerPal.Web.Entities;
-using BeerPal.Web.Services;
+using BeerPal.Data.Entities;
 
 namespace BeerPal.Auth
 {

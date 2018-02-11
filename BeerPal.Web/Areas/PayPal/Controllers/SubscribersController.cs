@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using BeerPal.Data.Entities;
 using BeerPal.Web.Areas.PayPal.Models.Subscribers;
-using BeerPal.Web.Entities;
 using BeerPal.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using PayPal.BillingAgreements;

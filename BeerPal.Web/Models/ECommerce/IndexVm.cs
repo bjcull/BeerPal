@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using BeerPal.Web.Entities;
+using BeerPal.Data.Entities;
 
 namespace BeerPal.Web.Models.ECommerce
 {

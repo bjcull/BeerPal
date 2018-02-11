@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
-namespace BeerPal.Web.Migrations
+namespace BeerPal.Data.Migrations
 {
     public partial class InitialMigration : Migration
     {
@@ -63,6 +63,26 @@ namespace BeerPal.Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "BillingPlans",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    BraintreePlanId = table.Column<string>(nullable: true),
+                    Description1 = table.Column<string>(nullable: true),
+                    Description2 = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    NumberOfBeers = table.Column<int>(nullable: false),
+                    PayPalPlanId = table.Column<string>(nullable: true),
+                    Price = table.Column<int>(nullable: false),
+                    StripePlanId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BillingPlans", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
@@ -86,13 +106,19 @@ namespace BeerPal.Web.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    BraintreeCustomerId = table.Column<string>(nullable: true),
+                    BraintreePlanId = table.Column<string>(nullable: true),
+                    BraintreeSubscriptionId = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     PayPalAgreementId = table.Column<string>(nullable: true),
                     PayPalAgreementToken = table.Column<string>(nullable: true),
                     PayPalPlanId = table.Column<string>(nullable: true),
-                    StartDate = table.Column<DateTime>(nullable: false)
+                    StartDate = table.Column<DateTime>(nullable: false),
+                    StripeCustomerId = table.Column<string>(nullable: true),
+                    StripePlanId = table.Column<string>(nullable: true),
+                    StripeSubscriptionId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -327,6 +353,9 @@ namespace BeerPal.Web.Migrations
 
             migrationBuilder.DropTable(
                 name: "Beers");
+
+            migrationBuilder.DropTable(
+                name: "BillingPlans");
 
             migrationBuilder.DropTable(
                 name: "OrderItems");

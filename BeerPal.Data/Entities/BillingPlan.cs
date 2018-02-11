@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BeerPal.Web.Seeds;
-
-namespace BeerPal.Web.Entities
+﻿namespace BeerPal.Data.Entities
 {
     public class BillingPlan : BaseEntity
     {

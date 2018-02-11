@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using BeerPal.Auth.Services;
-using BeerPal.Web.Services;
 
 namespace BeerPal.Auth.Services
 {

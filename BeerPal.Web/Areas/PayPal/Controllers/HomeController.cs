@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using BeerPal.Web.Entities;
+using BeerPal.Data.Entities;
 using BeerPal.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using IndexVm = BeerPal.Web.Models.Home.IndexVm;

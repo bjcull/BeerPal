@@ -1,4 +1,4 @@
-﻿namespace BeerPal.Web.Entities
+﻿namespace BeerPal.Data.Entities
 {
     public class BaseEntity
     {

@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using BeerPal.Web.Entities;
+using BeerPal.Data.Entities;
 
 namespace BeerPal.Web.Areas.Stripe.Models.Subscription
 {

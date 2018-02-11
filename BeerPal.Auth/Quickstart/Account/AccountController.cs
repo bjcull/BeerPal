@@ -19,7 +19,7 @@ using System.Linq;
 using System;
 using System.Collections.Generic;
 using BeerPal.Auth.Models;
-using BeerPal.Web.Entities;
+using BeerPal.Data.Entities;
 
 namespace IdentityServer4.Quickstart.UI
 {

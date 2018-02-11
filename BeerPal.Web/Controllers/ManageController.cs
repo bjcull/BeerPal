@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using BeerPal.Web.Entities;
+using BeerPal.Data.Entities;
 using BeerPal.Web.Extensions;
 using BeerPal.Web.Models;
 using BeerPal.Web.Models.ManageViewModels;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BeerPal.Web.Entities
+namespace BeerPal.Data.Entities
 {
     public class Order : BaseEntity
     {

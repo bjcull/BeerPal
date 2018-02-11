@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using BeerPal.Data.Entities;
 using BeerPal.Web.Areas.Braintree.Models.Subscription;
-using BeerPal.Web.Entities;
 using BeerPal.Web.Models.Subscription;
 using BeerPal.Web.Services;
 using Braintree;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
+using Subscription = BeerPal.Data.Entities.Subscription;
 
 namespace BeerPal.Web.Areas.Braintree.Controllers
 {
@@ -71,7 +72,7 @@ namespace BeerPal.Web.Areas.Braintree.Controllers
                 };
                 var braintreeSubscription = await client.Subscription.CreateAsync(subscriptionRequest);
 
-                var subscription = new Entities.Subscription()
+                var subscription = new Subscription()
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,

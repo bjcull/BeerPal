@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using BeerPal.Data.Entities;
 using BeerPal.Web.Areas.PayPal.Controllers;
-using BeerPal.Web.Entities;
 using BeerPal.Web.Extensions;
 using BeerPal.Web.Models;
 using BeerPal.Web.Models.AccountViewModels;

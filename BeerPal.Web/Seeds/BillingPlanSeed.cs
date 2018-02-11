@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BeerPal.Web.Entities;
+using BeerPal.Data.Entities;
 using PayPal.BillingPlans;
 using Stripe;
 

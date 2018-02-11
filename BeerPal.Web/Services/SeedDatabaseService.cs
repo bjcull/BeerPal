@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BeerPal.Web.Entities;
+using BeerPal.Data.Entities;
 using BeerPal.Web.Models;
 using BeerPal.Web.Seeds;
 

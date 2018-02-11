@@ -30,4 +30,8 @@
     <Folder Include="Areas\Stripe\Data\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BeerPal.Data\BeerPal.Data.csproj" />
+  </ItemGroup>
+
 </Project>

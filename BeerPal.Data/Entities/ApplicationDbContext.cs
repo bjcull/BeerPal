@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace BeerPal.Web.Entities
+namespace BeerPal.Data.Entities
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

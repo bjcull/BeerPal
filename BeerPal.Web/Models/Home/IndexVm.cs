@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using BeerPal.Web.Entities;
+using BeerPal.Data.Entities;
 using BeerPal.Web.Models.Subscription;
 
 namespace BeerPal.Web.Models.Home

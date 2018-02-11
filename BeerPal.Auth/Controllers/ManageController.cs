@@ -13,8 +13,7 @@ using Microsoft.Extensions.Options;
 using BeerPal.Auth.Models;
 using BeerPal.Auth.Models.ManageViewModels;
 using BeerPal.Auth.Services;
-using BeerPal.Web.Entities;
-using BeerPal.Web.Services;
+using BeerPal.Data.Entities;
 
 namespace BeerPal.Auth.Controllers
 {
